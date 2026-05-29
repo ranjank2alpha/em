@@ -29,7 +29,7 @@ export default function App() {
 
   return (
     <div>
-      <h1 className="text-center mt-4 mb-4">K2Alpha Expense Tracker</h1>
+      <h1 className="text-center mt-4 mb-4">K2Alpha Expense Manager</h1>
       {!session ? <Auth /> : <Dashboard key={session.user.id} session={session} />}
     </div>
   );
