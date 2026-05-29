@@ -1,16 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg-color: #0f1115;
-  --surface-color: #1a1d24;
-  --surface-hover: #232730;
-  --primary-color: #6366f1;
-  --primary-hover: #4f46e5;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --border-color: #334155;
-  --success-color: #10b981;
-  --danger-color: #ef4444;
+  --bg-color: #080C14;
+  --surface-color: #141C2B;
+  --surface-hover: #1D283D;
+  --primary-color: #38BDF8;
+  --primary-hover: #0ea5e9;
+  --accent-color: #C9A84C;
+  --accent-hover: #b89539;
+  --text-primary: #E2E8F0;
+  --text-secondary: #94A3B8;
+  --border-color: rgba(56, 189, 248, 0.12);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --success-color: #34D399;
+  --danger-color: #F87171;
   --font-family: 'Inter', system-ui, -apple-system, sans-serif;
   --border-radius: 12px;
   --transition: all 0.2s ease;
@@ -142,7 +145,7 @@ h1, h2, h3, h4 {
 .input:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
 }
 
 /* Dashboard Summary Grid */
@@ -309,7 +312,7 @@ h1, h2, h3, h4 {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  color: #6366f1;
+  color: var(--accent-color);
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
