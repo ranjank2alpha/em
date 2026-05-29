@@ -52,6 +52,9 @@ export default function Auth() {
 
   return (
     <div className="card" style={{ maxWidth: '400px', margin: '4rem auto' }}>
+      <div className="text-center mb-4">
+        <img src="/logo.jpg" alt="K2Alpha Logo" style={{ width: '120px', height: 'auto', borderRadius: '16px', boxShadow: '0 0 24px rgba(56,189,248,0.2)' }} />
+      </div>
       <h2 className="text-center mb-4">K2Alpha Expense Login</h2>
       {error && <div className="text-danger mb-4 text-center">{error}</div>}
       <form onSubmit={handleAuth}>

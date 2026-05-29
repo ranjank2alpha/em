@@ -374,7 +374,11 @@ export default function Dashboard({ session }) {
 
   return (
     <div>
-      <div className="flex-between mb-4">
+      <div className="flex-between mb-6" style={{ borderBottom: '1px solid var(--border-color)', paddingBottom: '1rem', alignItems: 'center' }}>
+        <div className="flex-item" style={{ gap: '0.75rem' }}>
+          <img src="/logo.jpg" alt="K2Alpha Logo" style={{ width: '36px', height: 'auto', borderRadius: '8px', boxShadow: '0 0 12px rgba(56,189,248,0.15)' }} />
+          <span style={{ fontSize: '1.25rem', fontWeight: 900, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>K2Alpha<span style={{ color: 'var(--primary-color)' }}>.ai</span></span>
+        </div>
         <div className="flex-item" style={{ gap: '0.5rem' }}>
           Welcome, <strong>{session.user.email.split('@')[0].split('.')[0]}</strong>
           <button 
