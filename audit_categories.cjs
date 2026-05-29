@@ -1,15 +1,13 @@
-// Audit script — checks all existing ledger entries against the current category list
-// AI Tier: INSIGHT (Gemini) — multi-record analysis and pattern recognition
-
+require('dotenv').config({ path: '.env.local' });
 const { createClient } = require('@supabase/supabase-js');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 const supabase = createClient(
-  'https://gwcbjhcufulfhbuphqtf.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd3Y2JqaGN1ZnVsZmhidXBocXRmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NDEyMTE5NiwiZXhwIjoyMDg5Njk3MTk2fQ.HnrgcvjUfNsZpZUWoK5t_uHNhvdEjL3jAwN_654sKD0'
+  process.env.VITE_SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
-const genAI = new GoogleGenerativeAI('AIzaSyCmwn2taMBfaj3x3R4dYHL7CkTGbBJvN3o');
+const genAI = new GoogleGenerativeAI(process.env.VITE_GEMINI_API_KEY);
 
 const cleanJson = (text) => { try { const t = text.trim(); JSON.parse(t); return t; } catch (e) {} const blocks = []; let count = 0; let start = -1; for (let i = 0; i < text.length; i++) { if (text[i] === "{" || text[i] === "[") { if (count === 0) start = i; count++; } else if (text[i] === "}" || text[i] === "]") { count--; if (count === 0 && start !== -1) { blocks.push(text.substring(start, i + 1)); } } } for (let i = blocks.length - 1; i >= 0; i--) { try { JSON.parse(blocks[i]); return blocks[i]; } catch (e) {} } return text.replace(/```json|```/g, "").trim(); };
 

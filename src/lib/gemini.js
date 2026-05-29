@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // Global API Key (Supports ONLY 2.5 and 2.0+ models)
-const GLOBAL_GEMINI_API_KEY = "AIzaSyBOARew2ANEsqvFS12obHtbWZqOZ0A9O-g";
+const GLOBAL_GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(GLOBAL_GEMINI_API_KEY);
 
 const cleanJson = (text) => { try { const t = text.trim(); JSON.parse(t); return t; } catch (e) {} const blocks = []; let count = 0; let start = -1; for (let i = 0; i < text.length; i++) { if (text[i] === "{" || text[i] === "[") { if (count === 0) start = i; count++; } else if (text[i] === "}" || text[i] === "]") { count--; if (count === 0 && start !== -1) { blocks.push(text.substring(start, i + 1)); } } } for (let i = blocks.length - 1; i >= 0; i--) { try { JSON.parse(blocks[i]); return blocks[i]; } catch (e) {} } return text.replace(/```json|```/g, "").trim(); };
@@ -75,7 +75,7 @@ Extract the following details from the text:
   Existing categories: "${categoryList}".
   If and only if you are certain none fit, invent a concise new category (2-3 words max).
 - is_new_category: true if you created a brand-new category not in the existing list, false otherwise.
-- recipient: If this is an "Internal Transfer", the name of the recipient (e.g., "rakant" or "rikant"). Otherwise null.
+- recipient: If this is an "Internal Transfer", the name of the recipient (e.g., "ranjan" or "ashish"). Otherwise null.
 - description: A brief summary of the transaction.
 - date: The date of the transaction in YYYY-MM-DD format (assume today's date is ${new Date().toLocaleDateString('en-CA')} if not specified).
 
@@ -144,7 +144,7 @@ Table: ledger
   - transfer_to: uuid (for internal transfers between the two users)
 
 Table: profiles
-  - Known users: "Rakant" or "Ranjan" (user 1), "Rikant" or "Ridhi" (user 2)
+  - Known users: "Ranjan" (user 1), "Ashish" (user 2)
 
 USER QUESTION: "${question}"
 
@@ -163,8 +163,8 @@ Respond ONLY with valid JSON:
     "type": "income" | "expense" | null,
     "category": "exact category name" | null,
     "categories": ["cat1", "cat2"] | null,
-    "user_name": "rakant" | "rikant" | null,
-    "transfer_to_name": "rakant" | "rikant" | null,
+    "user_name": "ranjan" | "ashish" | null,
+    "transfer_to_name": "ranjan" | "ashish" | null,
     "date_from": "YYYY-MM-DD" | null,
     "date_to": "YYYY-MM-DD" | null,
     "amount_min": number | null,

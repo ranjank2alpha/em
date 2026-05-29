@@ -329,26 +329,26 @@ export default function Dashboard({ session }) {
     const result = [];
     console.log(`Normalizing ledger for ${userType}. Total ledger items:`, ledger.length);
     ledger.forEach(item => {
-      const isRakantEntry = item.profiles?.name?.toLowerCase().includes('ranjan') || item.profiles?.name?.toLowerCase().includes('rakant');
-      const isRikantEntry = item.profiles?.name?.toLowerCase().includes('ridhi') || item.profiles?.name?.toLowerCase().includes('rikant');
+      const isRanjanEntry = item.profiles?.name?.toLowerCase().includes('ranjan') || item.profiles?.name?.toLowerCase().includes('rakant');
+      const isAshishEntry = item.profiles?.name?.toLowerCase().includes('ashish') || item.profiles?.name?.toLowerCase().includes('rikant') || item.profiles?.name?.toLowerCase().includes('karan') || item.profiles?.name?.toLowerCase().includes('ridhi');
       
       // Look up who it was transferred TO
       const recipientProfile = profiles.find(p => p.id === item.transfer_to);
-      const isToRakant = recipientProfile?.name?.toLowerCase().includes('ranjan') || recipientProfile?.name?.toLowerCase().includes('rakant');
-      const isToRikant = recipientProfile?.name?.toLowerCase().includes('ridhi') || recipientProfile?.name?.toLowerCase().includes('rikant');
+      const isToRanjan = recipientProfile?.name?.toLowerCase().includes('ranjan') || recipientProfile?.name?.toLowerCase().includes('rakant');
+      const isToAshish = recipientProfile?.name?.toLowerCase().includes('ashish') || recipientProfile?.name?.toLowerCase().includes('rikant') || recipientProfile?.name?.toLowerCase().includes('karan') || recipientProfile?.name?.toLowerCase().includes('ridhi');
 
-      if (userType === 'rakant') {
-        if (isRakantEntry) {
+      if (userType === 'ranjan') {
+        if (isRanjanEntry) {
           result.push({ ...item, displayAmount: item.type === 'income' ? item.amount : -item.amount });
-        } else if (isToRakant) {
-          // If paid TO Rakant, it's Income (+amount) for Rakant
+        } else if (isToRanjan) {
+          // If paid TO Ranjan, it's Income (+amount) for Ranjan
           result.push({ ...item, displayAmount: item.amount, displayType: 'income' });
         }
-      } else if (userType === 'rikant') {
-        if (isRikantEntry) {
+      } else if (userType === 'ashish') {
+        if (isAshishEntry) {
           result.push({ ...item, displayAmount: item.type === 'income' ? item.amount : -item.amount });
-        } else if (isToRikant) {
-          // If paid TO Rikant, it's Income (+amount) for Rikant
+        } else if (isToAshish) {
+          // If paid TO Ashish, it's Income (+amount) for Ashish
           result.push({ ...item, displayAmount: item.amount, displayType: 'income' });
         }
       } else if (userType === 'estate') {
@@ -376,7 +376,7 @@ export default function Dashboard({ session }) {
     <div>
       <div className="flex-between mb-4">
         <div className="flex-item" style={{ gap: '0.5rem' }}>
-          Welcome, <strong>{session.user.email.split('.')[0]}</strong>
+          Welcome, <strong>{session.user.email.split('@')[0].split('.')[0]}</strong>
           <button 
             className="btn-icon" 
             style={{ width: 'auto', padding: '0 0.5rem', background: 'transparent' }} 
@@ -415,7 +415,7 @@ export default function Dashboard({ session }) {
           <form onSubmit={handleNLPSubmit} className="nlp-wrapper">
             <textarea
               className="input w-full nlp-textarea"
-              placeholder="e.g. 'Paid 20k to Rikant for Staff Salary'"
+              placeholder="e.g. 'Paid 20k to Ashish for Staff Salary'"
               value={nlpText}
               onChange={(e) => setNlpText(e.target.value)}
               disabled={parsing}
@@ -470,8 +470,9 @@ export default function Dashboard({ session }) {
 
       <div className="ledgers-grid">
         {(() => {
-          const currentUserKey = session.user.email.split('.')[0].toLowerCase();
-          const userKeys = ['rakant', 'rikant'];
+          const emailLocalPart = session.user.email.split('@')[0].toLowerCase();
+          const currentUserKey = emailLocalPart.split('.')[0];
+          const userKeys = ['ranjan', 'ashish'];
           // Put current user first, then the other
           const orderedKeys = userKeys.sort((a, b) => (a === currentUserKey ? -1 : 1));
           

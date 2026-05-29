@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { supabase } from '../lib/supabase';
 
 const USERS = {
-  rakant: { email: 'rakant.estate@gmail.com', name: 'Ranjan' },
-  rikant: { email: 'rikant.estate@gmail.com', name: 'Ridhi' }
+  ranjan: { email: 'ranjan@k2alpha.ai', name: 'Ranjan' },
+  ashish: { email: 'ashish.karan@k2alpha.ai', name: 'Ashish' }
 };
 
 export default function Auth() {
@@ -21,7 +21,7 @@ export default function Auth() {
       const user = USERS[userKey];
       
       if (!user) {
-        throw new Error("Invalid username. Please use 'rakant' or 'rikant'.");
+        throw new Error("Invalid username. Please use 'ranjan' or 'ashish'.");
       }
       
       const email = user.email;
@@ -64,8 +64,8 @@ export default function Auth() {
             required
           >
             <option value="">Select User</option>
-            <option value="rakant">rakant</option>
-            <option value="rikant">rikant</option>
+            <option value="ranjan">ranjan</option>
+            <option value="ashish">ashish</option>
           </select>
         </div>
         <div className="input-group">
