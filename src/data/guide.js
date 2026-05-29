@@ -32,7 +32,7 @@ export const USER_GUIDE = [
   {
     id: "categories",
     title: "Categories",
-    keywords: ["categories", "types", "groups", "travel", "legal", "utilities", "dad biz", "mom"],
-    content: "Standard categories include: Travel, Staff Salary, Groceries, Utilities, Legal, Maintenance, Funeral, Sale, Bank, Dad Biz payments, Mom payment, and Internal Transfer."
+    keywords: ["categories", "types", "groups", "saas", "software", "travel", "salaries", "workspace", "internet", "hardware", "reimbursement"],
+    content: "Standard categories include: SaaS & Software, AI & LLM APIs, Professional Services, Salaries & Payroll, Travel & Lodging, Client Entertainment, Marketing & Ads, Workspace & Co-working, Internet & Telecom, Hardware & Gadgets, Internal Transfer, and Reimbursement."
   }
 ];

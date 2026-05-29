@@ -62,10 +62,10 @@ async function callDualTierAI(prompt, tier = "protocol", responseMimeType = "tex
 export async function parseTransactionWithNLP(text, categories = []) {
   const categoryList = categories.length > 0
     ? categories.map(c => c.name).join('", "')
-    : 'Funeral", "Legal", "Utilities", "Maintenance", "Sale", "Bank", "Internal Transfer", "Travel", "Staff Salary", "Dad Biz payments", "Mom payment';
+    : 'SaaS & Software", "AI & LLM APIs", "Professional Services", "Salaries & Payroll", "Travel & Lodging", "Client Entertainment", "Marketing & Ads", "Workspace & Co-working", "Internet & Telecom", "Hardware & Gadgets", "Internal Transfer", "Reimbursement';
 
   const prompt = `
-You are a financial parsing assistant. The user is managing an estate ledger.
+You are a financial parsing assistant. The user is managing a business expense ledger.
 Extract the following details from the text:
 - amount: The monetary value (number only, no currency symbols).
 - type: Either "income" or "expense" (outgoing money is expense, incoming is income).
@@ -130,7 +130,7 @@ export async function generateFilterSpec(question, categories) {
   const categoryList = categories.map(c => c.name).join(', ');
 
   const prompt = `
-You are a database query planner for a personal estate finance ledger.
+You are a database query planner for a business expense ledger.
 
 DATABASE SCHEMA:
 Table: ledger
@@ -189,7 +189,7 @@ Respond ONLY with valid JSON:
 // Takes the filtered data + original question and returns a natural language answer.
 export async function answerLedgerQuery(question, data) {
   const prompt = `
-You are a financial assistant for a private estate. Answer the user's question using ONLY the
+You are a business expense assistant. Answer the user's question using ONLY the
 transaction data provided below. Do not make up figures or infer data that is not present.
 Format currency values in Indian Rupees (₹). Be concise and factual.
 If the data is empty, say so clearly.
