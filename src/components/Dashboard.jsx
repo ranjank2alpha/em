@@ -499,7 +499,7 @@ export default function Dashboard({ session }) {
                 />
               ))}
               <LedgerTable 
-                title="Estate" 
+                title="K2Alpha" 
                 data={getNormalizedLedger('estate')} 
                 expandedRows={expandedRows}
                 setExpandedRows={setExpandedRows}

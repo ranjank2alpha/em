@@ -52,7 +52,7 @@ export default function Auth() {
 
   return (
     <div className="card" style={{ maxWidth: '400px', margin: '4rem auto' }}>
-      <h2 className="text-center mb-4">Estate Ledger Login</h2>
+      <h2 className="text-center mb-4">K2Alpha Expense Login</h2>
       {error && <div className="text-danger mb-4 text-center">{error}</div>}
       <form onSubmit={handleAuth}>
         <div className="input-group">

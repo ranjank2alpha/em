@@ -9,7 +9,7 @@ export const USER_GUIDE = [
     id: "transfers",
     title: "Internal Transfers",
     keywords: ["transfer", "give", "sent", "ashish", "ranjan", "repay"],
-    content: "If you move money between Ranjan and Ashish, use the recipient name. Example: 'Sent 20k to Ashish'. This will show as an expense for the sender and income for the receiver. Transfers are hidden from the Estate ledger by default to keep it clean."
+    content: "If you move money between Ranjan and Ashish, use the recipient name. Example: 'Sent 20k to Ashish'. This will show as an expense for the sender and income for the receiver. Transfers are hidden from the K2Alpha ledger by default to keep it clean."
   },
   {
     id: "editing",
@@ -20,8 +20,8 @@ export const USER_GUIDE = [
   {
     id: "ledgers",
     title: "Triple Ledger View",
-    keywords: ["ledger", "grid", " ranjan", "ashish", "estate", "view", "sections"],
-    content: "The dashboard is split into three side-by-side ledgers: Ranjan, Ashish, and Estate. The Estate ledger is a combined view of all external transactions. Internal transfers only appear in the individual ledgers."
+    keywords: ["ledger", "grid", " ranjan", "ashish", "k2alpha", "view", "sections"],
+    content: "The dashboard is split into three side-by-side ledgers: Ranjan, Ashish, and K2Alpha. The K2Alpha ledger is a combined view of all external transactions. Internal transfers only appear in the individual ledgers."
   },
   {
     id: "details",
